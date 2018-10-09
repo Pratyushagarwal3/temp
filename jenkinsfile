@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Postivity') {
             steps {
-                sh 'mvn validate'
+                sh 'echo Hello pratyush'
             }
         }
           
