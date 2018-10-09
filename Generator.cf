@@ -1,0 +1,20 @@
+[Script Configuration]
+Adaptation=cadmne.analyticsvnfc
+Version=1.0
+NEVersion=1.0
+Presentation=Central Administrator Analytics VNFC
+MOClassName=CADMVNF
+ParentClassID=5091
+koalaID=CADMVNF
+repProcessId=0xAE2C
+Subsystem=sdmgeir
+SCName=umasdm
+DBNAME=ANALYTICSERVER
+KOALAFilePath=/home/dauser/dafiles
+ObjectclassNAME=CADMVNF
+ObjectKoalaID=CADMVNF
+objectclassid=5093
+logpath=./log/
+CounterDef=CounterDefs.xml
+SUBOBJECT=ANALYTICSVNFC
+adaptationTypetoGenerate=static
