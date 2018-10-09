@@ -7,15 +7,29 @@ pipeline {
                 echo 'Building..'
             }
         }
-        stage('Test') {
+          stage('first stage') {
             steps {
-                echo 'Testing..'
+                // write out any env vars you like to a temp file
+                sh 'echo export FOO=$(cat Generator.cf | grep -w Adaptation | cut -f2 -d"=") > myenv'
+				sh 'echo export BAZ=$(cat Generator.cf | grep -w Version | cut -f2 -d"=") > myenv1'
+                // stash away for later use
+                stash 'myenv'
+				stash 'myenv1'
             }
         }
-        stage('Deploy') {
+
+        stage ("later stage") {
             steps {
-                echo 'Deploying....'
+			// unstash the temp file and apply it
+                unstash 'myenv'
+				unstash 'myenv1'
+			sh '''
+                . ./myenv
+				. ./myenv1
+                echo $FOO
+				echo $BAZ
+			'''
             }
-        }
+        
     }
 }
